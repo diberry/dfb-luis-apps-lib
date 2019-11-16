@@ -1,0 +1,48 @@
+{
+  "name": "dfb-luis-apps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/**/*.d.ts",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "clean": "rimraf build/*",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test",
+    "preversion": "npm run lint",
+    "postversion": "git push && git push --tags",
+    "version": "npm run format && git add -A src",
+    "prebuild": "npm run clean",
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" ",
+    "lint": "tslint -p tsconfig.base.json -c tslint.json --exclude \"node_modules/**\" \"**/*.ts\" "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "async-await-retry": "^1.0.3",
+    "fs-extra": "^4.0.2",
+    "got": "^9.6.0",
+    "moment": "^2.19.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "requestretry": "^1.12.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.16",
+    "@types/node": "^12.6.9",
+    "@types/request": "^2.48.2",
+    "@types/request-promise": "^4.1.44",
+    "@types/uuid": "^3.4.5",
+    "dotenv": "^8.2.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  }
+}
