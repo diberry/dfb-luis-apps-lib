@@ -34,8 +34,6 @@ export interface IApp {
   export class Apps {
 
       static async getApps (key): Promise<Array<IApp>> {
-
-        console.log(key);
     
         let requestOptions = {
             method: "GET",
@@ -45,11 +43,7 @@ export interface IApp {
             }
         };
     
-        console.log(requestOptions);
-    
         const myApps = await request(requestOptions);
-    
-        console.log(myApps);
     
         const appsAtObjects = JSON.parse(myApps);
     
