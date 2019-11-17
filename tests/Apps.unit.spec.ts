@@ -1,4 +1,4 @@
-import { Apps, IApp }  from '../src/index';
+import { LuisApps, ILuisApp }  from '../src/index';
 require('dotenv').config();
 
 describe('LUIS', () => {
@@ -7,8 +7,8 @@ describe('LUIS', () => {
 
         try {
 
-            const apps: any = await Apps.getApps(process.env.LUIS_AUTHORING_KEY);
-            const typedObject: IApp[] = <IApp[]> apps;
+            const apps: any = await LuisApps.getApps(process.env.LUIS_AUTHORING_KEY);
+            const typedObject: ILuisApp[] = <ILuisApp[]> apps;
             expect(typedObject[0].name).toBe("Hazem's Pizza App 2");
             done();
 

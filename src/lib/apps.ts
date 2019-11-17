@@ -1,7 +1,7 @@
 const request = require("request-promise");
 //const retry = require('async-await-retry');
 
-export interface IApp {
+export interface ILuisApp {
     id: string;
     name: string;
     description: string;
@@ -31,9 +31,9 @@ export interface IApp {
     publishedDateTime: string;
     failedRegions?: null;
   }
-  export class Apps {
+  export class LuisApps {
 
-      static async getApps (key): Promise<Array<IApp>> {
+      static async getApps (key): Promise<Array<ILuisApp>> {
     
         let requestOptions = {
             method: "GET",
