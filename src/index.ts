@@ -1,1 +1,1 @@
-export { LuisApps, ILuisApp, IEndpoints, IEndPointType } from "./lib/apps";
+export { LuisApps, ILuisApp, IEndpoints, IEndPointType } from './lib/apps';
