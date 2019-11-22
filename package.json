@@ -15,7 +15,7 @@
     "prebuild": "npm run clean",
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"__mocks__/**/*.ts\" \"__mocks__/**/*.js\" \"tests/**/*.ts\" ",
-    "lint": "tslint -p tsconfig.base.json -c tslint.json --exclude \"node_modules/**\" \"**/*.ts\" ",
+    "lint": "tslint -p tsconfig.base.json -c tslint.json --exclude \"node_modules/**\" \"**/*.ts\" "
   },
   "author": "",
   "license": "ISC",
