@@ -1,4 +1,4 @@
-import { LuisApps, ILuisApp } from '../src/index';
+import { LuisApps, ILuisApp } from '../index';
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 
