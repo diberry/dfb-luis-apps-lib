@@ -3,8 +3,8 @@ module.exports = {
     "^.+\\.ts$": "ts-jest",
   },
   testMatch: [
-    "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[jt]s?(x)"
+    "**/__tests__/**/*.ts?(x)",
+    "**/?(*.)+(spec|test).ts?(x)"
   ],
   moduleDirectories: ["node_modules", "lib"],
   moduleFileExtensions: ["ts", "js", "json"],
