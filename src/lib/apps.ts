@@ -1,5 +1,6 @@
 const request = require('request-promise');
 //const retry = require('async-await-retry');
+import { IValues } from './interfaces';
 
 export interface ILuisApp {
   id: string;
@@ -32,16 +33,23 @@ export interface IEndPointType {
   failedRegions?: null;
 }
 export class LuisApps {
-  static async getApps(key): Promise<Array<ILuisApp>> {
-    if (!key || key.length != 32) {
-      throw new Error('invalid parameter `key`');
+  static async getApps(values: IValues): Promise<Array<ILuisApp>> {
+    
+    if (!values) throw new Error("values: IValues is empty");
+    
+    if (!values.key || values.key==="" || values.key ===undefined || values.key.length != 32) {
+      throw new Error('dfb-luis-apps-lib::getApps - invalid parameter `key`');
     }
+
+    if (!values.endpoint || values.endpoint==="" || values.endpoint ===undefined) {
+      throw new Error('dfb-luis-apps-lib::getApps - invalid parameter `endpoint`');
+    }    
 
     let requestOptions = {
       method: 'GET',
-      url: 'https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps?take=500',
+      url: `${values.endpoint}luis/api/v2.0/apps?take=500`,
       headers: {
-        'Ocp-Apim-Subscription-Key': key,
+        'Ocp-Apim-Subscription-Key': values.key,
       },
     };
 
