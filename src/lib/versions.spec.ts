@@ -6,21 +6,18 @@ jest.mock('./models');
 import { LuisAppVersionModels } from './models';
 
 const versions_mock_data = JSON.stringify(MockData.Versions);
-const mockRequest = require("request-promise");
+const mockRequest = require('request-promise');
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-const real_endpoint = "https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/";
-const real_appId = "e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c";
+const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
+const real_appId = 'e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c';
 
 const mockLuisAppVersionModelsGetModels = jest.spyOn(LuisAppVersionModels, 'getModels');
 mockLuisAppVersionModelsGetModels.mockResolvedValue(<ILuisModel[]>MockData.Models);
 
 describe('LUIS Versions', () => {
-
   beforeEach(() => {
-    mockRequest.mockImplementationOnce(() =>
-      Promise.resolve(versions_mock_data))
-
+    mockRequest.mockImplementationOnce(() => Promise.resolve(versions_mock_data));
   });
 
   afterEach(() => {
@@ -30,23 +27,23 @@ describe('LUIS Versions', () => {
   });
 
   describe('returns 2xx', () => {
-    it('if correct key, then get versions', async (done) => {
+    it('if correct key, then get versions', async done => {
       try {
-
         const values: IValues = {
-          "endpoint": real_endpoint,
-          "key": fake_key,
-          "appId": real_appId
+          endpoint: real_endpoint,
+          key: fake_key,
+          appId: real_appId,
         };
         const featureFlags = {
-            "versions": true,
-            "models": false
+          versions: true,
+          models: false,
         };
 
         const versions: any = await LuisAppVersions.getVersions(values, featureFlags);
         const typedObject: ILuisAppVersion[] = <ILuisAppVersion[]>versions;
-        expect(typedObject[0].version).toBe("mock0.1");
-        expect(LuisAppVersionModels.getModels).toHaveBeenCalledTimes(0);      expect(typedObject[0]).not.toHaveProperty('models');
+        expect(typedObject[0].version).toBe('mock0.1');
+        expect(LuisAppVersionModels.getModels).toHaveBeenCalledTimes(0);
+        expect(typedObject[0]).not.toHaveProperty('models');
 
         done();
       } catch (err) {
@@ -54,27 +51,26 @@ describe('LUIS Versions', () => {
       }
     });
   });
-  it('if correct key, then get versions and models', async (done) => {
+  it('if correct key, then get versions and models', async done => {
     try {
-
       const values: IValues = {
-        "endpoint": real_endpoint,
-        "key": fake_key,
-        "appId": real_appId
+        endpoint: real_endpoint,
+        key: fake_key,
+        appId: real_appId,
       };
       const featureFlags = {
-          "versions": true,
-          "models": true
+        versions: true,
+        models: true,
       };
 
       const versions: any = await LuisAppVersions.getVersions(values, featureFlags);
       const typedObject: ILuisAppVersion[] = <ILuisAppVersion[]>versions;
-      expect(typedObject[0].version).toBe("mock0.1");
+      expect(typedObject[0].version).toBe('mock0.1');
       expect(typedObject[0]).toHaveProperty('models');
       expect(LuisAppVersionModels.getModels).toHaveBeenCalledTimes(4);
 
       // @ts-ignore
-      expect(typedObject[0].models[0].name).toEqual("mockCancelOrder");
+      expect(typedObject[0].models[0].name).toEqual('mockCancelOrder');
 
       done();
     } catch (err) {
@@ -84,11 +80,11 @@ describe('LUIS Versions', () => {
 });
 
 describe('throw errors', () => {
-  it('if empty key, then throw error', async (done) => {
+  it('if empty key, then throw error', async done => {
     try {
       const values: IValues = {
-        "endpoint": real_endpoint,
-        "key": undefined
+        endpoint: real_endpoint,
+        key: undefined,
       };
 
       const versions: any = await LuisAppVersions.getVersions(values);
@@ -100,11 +96,11 @@ describe('throw errors', () => {
       done();
     }
   });
-  it('if empty endpoint, then throw error', async (done) => {
+  it('if empty endpoint, then throw error', async done => {
     try {
       const values: IValues = {
-        "endpoint": undefined,
-        "key": fake_key
+        endpoint: undefined,
+        key: fake_key,
       };
 
       const versions: any = await LuisAppVersions.getVersions(values);
@@ -116,7 +112,7 @@ describe('throw errors', () => {
       done();
     }
   });
-  it('if undefined values, then throw error', async (done) => {
+  it('if undefined values, then throw error', async done => {
     try {
       // @ts-ignore
       const values = undefined;
@@ -131,7 +127,7 @@ describe('throw errors', () => {
       done();
     }
   });
-  it('if empty values array, then throw error', async (done) => {
+  it('if empty values array, then throw error', async done => {
     try {
       const values = [];
 
@@ -145,4 +141,3 @@ describe('throw errors', () => {
     }
   });
 });
-

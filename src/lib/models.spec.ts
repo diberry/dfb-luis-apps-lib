@@ -1,22 +1,19 @@
-import { LuisAppVersionModels  } from '../index';
+import { LuisAppVersionModels } from '../index';
 import { IValues, ILuisModel } from './interfaces';
 import { MockData } from '../mockData/index';
 
 const models_mock_data = JSON.stringify(MockData.Models);
 
-const mockRequest = require("request-promise");
+const mockRequest = require('request-promise');
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-const real_endpoint = "https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/";
-const real_appId = "e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c";
-const real_versionId = "0.4";
+const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
+const real_appId = 'e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c';
+const real_versionId = '0.4';
 
 describe('LUIS Models', () => {
-
   beforeEach(() => {
-    mockRequest.mockImplementationOnce(() =>
-      Promise.resolve(models_mock_data))
-      
+    mockRequest.mockImplementationOnce(() => Promise.resolve(models_mock_data));
   });
 
   afterEach(() => {
@@ -25,20 +22,19 @@ describe('LUIS Models', () => {
   });
 
   describe('returns 2xx', () => {
-    it('if correct key, then get apps', async (done) => {
+    it('if correct key, then get apps', async done => {
       try {
-
         const values: IValues = {
-          "endpoint": real_endpoint,
-          "key": fake_key,
-          "appId": real_appId,
-          "versionId": real_versionId
+          endpoint: real_endpoint,
+          key: fake_key,
+          appId: real_appId,
+          versionId: real_versionId,
         };
 
         const models: any = await LuisAppVersionModels.getModels(values);
 
         const typedObject: ILuisModel[] = <ILuisModel[]>models;
-        expect(typedObject[0].name).toContain("mock");
+        expect(typedObject[0].name).toContain('mock');
         done();
       } catch (err) {
         done(err);
@@ -48,15 +44,14 @@ describe('LUIS Models', () => {
 });
 
 describe('throw errors', () => {
-  it('if empty key, then throw error', async (done) => {
+  it('if empty key, then throw error', async done => {
     try {
       const values: IValues = {
-        "endpoint": real_endpoint,
-        "key": undefined,
-        "appId": real_appId,
-        "versionId": real_versionId
+        endpoint: real_endpoint,
+        key: undefined,
+        appId: real_appId,
+        versionId: real_versionId,
       };
-
 
       const apps: any = await LuisAppVersionModels.getModels(values);
 
@@ -67,14 +62,14 @@ describe('throw errors', () => {
       done();
     }
   });
-  it('if empty endpoint, then throw error', async (done) => {
+  it('if empty endpoint, then throw error', async done => {
     try {
       const values: IValues = {
-        "endpoint": undefined,
-        "key": fake_key,
-        "appId": real_appId,
-        "versionId": real_versionId
-      };      
+        endpoint: undefined,
+        key: fake_key,
+        appId: real_appId,
+        versionId: real_versionId,
+      };
 
       const apps: any = await LuisAppVersionModels.getModels(values);
 
@@ -84,16 +79,15 @@ describe('throw errors', () => {
       expect(error.message).toEqual('dfb-luis-apps-lib::getModels - invalid parameter `endpoint`');
       done();
     }
-  });  
-  it('if empty appId, then throw error', async (done) => {
+  });
+  it('if empty appId, then throw error', async done => {
     try {
       const values: IValues = {
-        "endpoint": real_endpoint,
-        "key": fake_key,
-        "appId": undefined,
-        "versionId": real_versionId
-      };      
-
+        endpoint: real_endpoint,
+        key: fake_key,
+        appId: undefined,
+        versionId: real_versionId,
+      };
 
       const apps: any = await LuisAppVersionModels.getModels(values);
 
@@ -103,16 +97,15 @@ describe('throw errors', () => {
       expect(error.message).toEqual('dfb-luis-apps-lib::getModels - invalid parameter `appId`');
       done();
     }
-  });  
-  it('if empty versionId, then throw error', async (done) => {
+  });
+  it('if empty versionId, then throw error', async done => {
     try {
       const values: IValues = {
-        "endpoint": real_endpoint,
-        "key": fake_key,
-        "appId": real_appId,
-        "versionId": undefined
-      };      
-
+        endpoint: real_endpoint,
+        key: fake_key,
+        appId: real_appId,
+        versionId: undefined,
+      };
 
       const apps: any = await LuisAppVersionModels.getModels(values);
 
@@ -122,8 +115,8 @@ describe('throw errors', () => {
       expect(error.message).toEqual('dfb-luis-apps-lib::getModels - invalid parameter `versionId`');
       done();
     }
-  });   
-  it('if undefined values, then throw error', async (done) => {
+  });
+  it('if undefined values, then throw error', async done => {
     try {
       // @ts-ignore
       const values = undefined;
@@ -137,8 +130,8 @@ describe('throw errors', () => {
       expect(error.message).toEqual('dfb-luis-apps-lib::getModels - values: IValues is empty');
       done();
     }
-  });  
-  it('if empty values array, then throw error', async (done) => {
+  });
+  it('if empty values array, then throw error', async done => {
     try {
       const values = [];
 
@@ -150,7 +143,5 @@ describe('throw errors', () => {
       expect(error.message).toEqual(`dfb-luis-apps-lib::getModels - values: IValues is empty`);
       done();
     }
-  });  
+  });
 });
-
-

@@ -6,14 +6,14 @@ import { LuisAppVersions } from './versions';
 export class LuisApps {
   static async getApps(values: IValues, features?: IFeatureFlags): Promise<Array<ILuisApp>> {
     try {
+      if (!values || values === undefined || values === [] || values.length === 0)
+        throw new Error('dfb-luis-apps-lib::getApps values is empty');
 
-      if (!values || values === undefined || values === [] || values.length === 0) throw new Error("dfb-luis-apps-lib::getApps values is empty");
-
-      if (!values.key || values.key === "" || values.key === undefined || values.key.length != 32) {
+      if (!values.key || values.key === '' || values.key === undefined || values.key.length != 32) {
         throw new Error('dfb-luis-apps-lib::getApps - invalid parameter `key`');
       }
 
-      if (!values.endpoint || values.endpoint === "" || values.endpoint === undefined) {
+      if (!values.endpoint || values.endpoint === '' || values.endpoint === undefined) {
         throw new Error('dfb-luis-apps-lib::getApps - invalid parameter `endpoint`');
       }
 
@@ -28,12 +28,11 @@ export class LuisApps {
       const myApps = await request(requestOptions);
       const appsAsObjects = JSON.parse(myApps);
 
-      if (!features || features.versions===false) return appsAsObjects;
+      if (!features || features.versions === false) return appsAsObjects;
 
       for (let x of appsAsObjects) {
-
         const tempValues: IValues = Object.assign(values, {});
-        tempValues.appId  = x.id;
+        tempValues.appId = x.id;
 
         const tempVersions = await LuisAppVersions.getVersions(tempValues, features);
 
@@ -41,7 +40,6 @@ export class LuisApps {
       }
 
       return appsAsObjects;
-
     } catch (err) {
       throw err;
     }

@@ -3,30 +3,28 @@ const request = require('request-promise');
 import { IValues, ILuisModel } from './interfaces';
 
 export class LuisAppVersionModels {
-
   /**
    * Key names: key, endpoint, appId, versionId
-   * @param values 
+   * @param values
    */
   static async getModels(values: IValues): Promise<Array<ILuisModel>> {
-
     try {
+      if (!values || values === undefined || values === [] || values.length === 0)
+        throw new Error('dfb-luis-apps-lib::getModels - values: IValues is empty');
 
-      if (!values || values === undefined || values === [] || values.length === 0) throw new Error("dfb-luis-apps-lib::getModels - values: IValues is empty");
-
-      if (!values.key || values.key === "" || values.key === undefined || values.key.length != 32) {
+      if (!values.key || values.key === '' || values.key === undefined || values.key.length != 32) {
         throw new Error('dfb-luis-apps-lib::getModels - invalid parameter `key`');
       }
 
-      if (!values.endpoint || values.endpoint === "" || values.endpoint === undefined) {
+      if (!values.endpoint || values.endpoint === '' || values.endpoint === undefined) {
         throw new Error('dfb-luis-apps-lib::getModels - invalid parameter `endpoint`');
       }
 
-      if (!values.appId || values.appId === "" || values.appId === undefined) {
+      if (!values.appId || values.appId === '' || values.appId === undefined) {
         throw new Error('dfb-luis-apps-lib::getModels - invalid parameter `appId`');
       }
 
-      if (!values.versionId || values.versionId === "" || values.versionId === undefined) {
+      if (!values.versionId || values.versionId === '' || values.versionId === undefined) {
         throw new Error('dfb-luis-apps-lib::getModels - invalid parameter `versionId`');
       }
 
@@ -43,7 +41,6 @@ export class LuisAppVersionModels {
       const modelsAsObjects = JSON.parse(myModels);
 
       return modelsAsObjects;
-
     } catch (err) {
       throw err;
     }
