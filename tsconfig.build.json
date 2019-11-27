@@ -5,6 +5,8 @@
     ],
     "exclude": [
         "node_modules",
-        "tests/**/*"
+        "tests/**/*",
+        "src/**/*.spec.*",
+        "src/mockData/**/*"
     ]
 }

@@ -12,7 +12,6 @@ module.exports = {
   coverageDirectory: "./coverage",
   coverageReporters: ["json", "html", "text"],
   testEnvironment: "node",
-  setupFiles: ["./tests/setup.ts"],
   notify: true,
   verbose: true,
   globals: {

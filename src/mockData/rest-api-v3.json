@@ -1,0 +1,5 @@
+{
+    "models": "https://{endpoint}/luis/authoring/v3.0-preview/apps/{appId}/versions/{versionId}/models?skip=0&take=500",
+    "versions": "https://{endpoint}/luis/authoring/v3.0-preview/apps/{appId}/versions?skip=0&take=500",
+    "apps":"https://{endpoint}/luis/authoring/v3.0-preview/apps/?skip=0&take=500"
+}

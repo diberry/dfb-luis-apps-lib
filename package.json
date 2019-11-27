@@ -13,7 +13,7 @@
     "postversion": "git push && git push --tags",
     "version": "npm run format && git add -A src",
     "prebuild": "npm run clean",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json --resolveJsonModule",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"__mocks__/**/*.ts\" \"__mocks__/**/*.js\" \"tests/**/*.ts\" ",
     "lint": "tslint -p tsconfig.base.json -c tslint.json --exclude \"node_modules/**\" \"**/*.ts\" "
   },

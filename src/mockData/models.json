@@ -1,0 +1,399 @@
+[{
+    "id": "4a465c5f-039f-4702-af11-d5cd09fa70df",
+    "name": "mockCancelOrder",
+    "typeId": 0,
+    "readableType": "Intent Classifier"
+  }, {
+    "id": "0800639f-8a07-40c1-bc8e-90d135bc6131",
+    "name": "mockConfirmation",
+    "typeId": 0,
+    "readableType": "Intent Classifier"
+  }, {
+    "id": "e3b4c551-c0f5-4d7c-af7f-010739f41108",
+    "name": "mockCrustList",
+    "typeId": 5,
+    "readableType": "Closed List Entity Extractor",
+    "subLists": [{
+      "id": 105631134,
+      "canonicalForm": "Deep Dish",
+      "list": ["deep dish", "deep dish crust"]
+    }, {
+      "id": 105631135,
+      "canonicalForm": "Pan",
+      "list": ["regular", "normal", "original", "regular crust", "normal crust", "original crust"]
+    }, {
+      "id": 105631136,
+      "canonicalForm": "Stuffed Crust",
+      "list": ["stuffed criust", "stuffed crusts"]
+    }, {
+      "id": 105631137,
+      "canonicalForm": "Thin",
+      "list": ["thin", "skinny", "thin crust", "skinny crust"]
+    }],
+    "roles": []
+  }, {
+    "id": "7ccd6e7c-016f-46e2-9067-3fdc823b1042",
+    "name": "mockDeliver",
+    "typeId": 5,
+    "readableType": "Closed List Entity Extractor",
+    "subLists": [],
+    "roles": [{
+      "id": "df110bdf-0d44-4f0f-a9cd-0c280fc98628",
+      "name": "mockOrigin"
+    }, {
+      "id": "5e6f0a80-6b33-42ac-80f4-cb9080afce17",
+      "name": "mockDestination"
+    }]
+  }, {
+    "id": "ee68bad4-77bf-4644-af96-c551aad245be",
+    "name": "mockGreetings",
+    "typeId": 0,
+    "readableType": "Intent Classifier"
+  }, {
+    "id": "b2c5c6a8-340d-4434-886f-76d5bc6b9137",
+    "name": "mockModifierList",
+    "typeId": 5,
+    "readableType": "Closed List Entity Extractor",
+    "subLists": [{
+      "id": 105631138,
+      "canonicalForm": "Add",
+      "list": ["with", "with extra", "extra", "add", "more of", "needs", "just", "replaced with", "with some"]
+    }, {
+      "id": 105631139,
+      "canonicalForm": "Remove",
+      "list": ["without", "substitute", "no", "hold", "hold the", "replace", "instead of", "with no", "leave off", "not want", "dont want", "except"]
+    }],
+    "roles": []
+  }, {
+    "id": "a66eb923-1aa2-49f1-8619-935a70800f23",
+    "name": "mockModifyOrder",
+    "typeId": 0,
+    "readableType": "Intent Classifier"
+  }, {
+    "id": "1f854b0f-3b4c-40c6-a269-b354bdc85346",
+    "name": "mockNone",
+    "typeId": 0,
+    "readableType": "Intent Classifier"
+  }, {
+    "id": "fb704d0c-1449-4746-98a9-36e9e54df8b7",
+    "name": "mocknumber",
+    "typeId": 2,
+    "readableType": "Prebuilt Entity Extractor",
+    "roles": []
+  }, {
+    "id": "696f4a97-1faa-46af-a48a-108a07cfc7f1",
+    "name": "mockOrder",
+    "typeId": 1,
+    "readableType": "Entity Extractor",
+    "children": [{
+      "id": "f9099ab6-46db-44fc-93e1-5785802eba78",
+      "name": "mockFullPizzaWithModifiers",
+      "children": [{
+        "id": "33e3d472-08e9-4822-94ce-bded70ab5810",
+        "name": "mockPizzaType",
+        "children": [],
+        "typeId": 1,
+        "readableType": "Child Entity Extractor"
+      }, {
+        "id": "1ccfdd56-31e4-44e1-a128-2897300b448c",
+        "name": "mockSize",
+        "instanceOf": "SizeList",
+        "children": [],
+        "typeId": 1,
+        "readableType": "Child Entity Extractor"
+      }, {
+        "id": "0e8ab0da-096e-4f88-a3b9-890fb748f364",
+        "name": "mockQuantity",
+        "instanceOf": "number",
+        "children": [],
+        "typeId": 1,
+        "readableType": "Child Entity Extractor"
+      }, {
+        "id": "eadd063f-983e-48fe-8d78-c9505d5283ed",
+        "name": "mockCrust",
+        "instanceOf": "CrustList",
+        "children": [],
+        "typeId": 1,
+        "readableType": "Child Entity Extractor"
+      }, {
+        "id": "84e76428-e02d-4343-8442-c8022999167b",
+        "name": "mockToppingModifiers",
+        "children": [{
+          "id": "ac3dfa23-13c7-4077-b106-3247eda4aeff",
+          "name": "mockTopping",
+          "instanceOf": "ToppingList",
+          "children": [],
+          "typeId": 1,
+          "readableType": "Child Entity Extractor"
+        }, {
+          "id": "5d2eb548-3a4f-4938-8599-4668293fb7c4",
+          "name": "mockModifier",
+          "instanceOf": "ModifierList",
+          "children": [],
+          "typeId": 1,
+          "readableType": "Child Entity Extractor"
+        }, {
+          "id": "a92cac50-b336-4655-9122-26e08744ebb3",
+          "name": "mockScope",
+          "instanceOf": "ScopeList",
+          "children": [],
+          "typeId": 1,
+          "readableType": "Child Entity Extractor"
+        }],
+        "typeId": 1,
+        "readableType": "Child Entity Extractor"
+      }],
+      "typeId": 1,
+      "readableType": "Child Entity Extractor"
+    }, {
+      "id": "2e00cdd3-697b-4c7e-a758-8c4871f640a4",
+      "name": "mockSideOrder",
+      "children": [{
+        "id": "794c7bf8-900f-4dcd-a7dd-d6cd3deb4408",
+        "name": "mockSideProduct",
+        "children": [],
+        "typeId": 1,
+        "readableType": "Child Entity Extractor"
+      }],
+      "typeId": 1,
+      "readableType": "Child Entity Extractor"
+    }],
+    "roles": []
+  }, {
+    "id": "fdd6776b-7abc-45e8-9278-60a18ec0397a",
+    "name": "mockScopeList",
+    "typeId": 5,
+    "readableType": "Closed List Entity Extractor",
+    "subLists": [{
+      "id": 105631140,
+      "canonicalForm": "Half",
+      "list": ["on half", "on one half", "the other half", "half with", "on one side", "one side", "1/2", "on the other half", "other half", "the other"]
+    }, {
+      "id": 105631141,
+      "canonicalForm": "Half And Half",
+      "list": ["half and half", "half & half"]
+    }, {
+      "id": 105631142,
+      "canonicalForm": "On One",
+      "list": ["on one", "on one of them"]
+    }],
+    "roles": []
+  }, {
+    "id": "c89c56de-5ab5-4cf8-a23b-cab0fe0976fb",
+    "name": "mockSizeList",
+    "typeId": 5,
+    "readableType": "Closed List Entity Extractor",
+    "subLists": [{
+      "id": 105631143,
+      "canonicalForm": "Extra Large",
+      "list": ["XL", "huge", "super big", "massive"]
+    }, {
+      "id": 105631144,
+      "canonicalForm": "Large",
+      "list": ["large"]
+    }, {
+      "id": 105631145,
+      "canonicalForm": "Medium",
+      "list": ["medium", "regular", "individual"]
+    }, {
+      "id": 105631146,
+      "canonicalForm": "Party Size",
+      "list": ["party size"]
+    }, {
+      "id": 105631147,
+      "canonicalForm": "Small",
+      "list": ["small", "smallest"]
+    }],
+    "roles": []
+  }, {
+    "id": "3d717086-ef96-4d2c-ab23-84a9a960fe7f",
+    "name": "mockToppingList",
+    "typeId": 5,
+    "readableType": "Closed List Entity Extractor",
+    "subLists": [{
+      "id": 105631148,
+      "canonicalForm": "Alfredo Sauce",
+      "list": ["alfredo", "alfredo sauce", "white sauce"]
+    }, {
+      "id": 105631149,
+      "canonicalForm": "All",
+      "list": ["everything", "various toppings"]
+    }, {
+      "id": 105631150,
+      "canonicalForm": "Anchovies",
+      "list": ["anchovie", "anchovies"]
+    }, {
+      "id": 105631151,
+      "canonicalForm": "Artichoke",
+      "list": ["artichokes", "artichoke"]
+    }, {
+      "id": 105631152,
+      "canonicalForm": "Artichokes",
+      "list": ["artichokes", "artichoke", "artichockes"]
+    }, {
+      "id": 105631153,
+      "canonicalForm": "Bacon",
+      "list": ["bacon", "bacon strips"]
+    }, {
+      "id": 105631154,
+      "canonicalForm": "Banana Pepper",
+      "list": ["yellow peppers", "yellow pepper", "banana pepper", "banana peppers"]
+    }, {
+      "id": 105631155,
+      "canonicalForm": "Barbecue",
+      "list": ["BBQ", "barbeque", "barbecue"]
+    }, {
+      "id": 105631156,
+      "canonicalForm": "Basil",
+      "list": ["basil", "basils"]
+    }, {
+      "id": 105631157,
+      "canonicalForm": "Beef",
+      "list": ["beef", "ground beef", "meat", "hamburger"]
+    }, {
+      "id": 105631158,
+      "canonicalForm": "Broccoli",
+      "list": ["broccoli"]
+    }, {
+      "id": 105631159,
+      "canonicalForm": "Canadian Bacon",
+      "list": ["canadian bacon", "canada bacon"]
+    }, {
+      "id": 105631160,
+      "canonicalForm": "Cheddar",
+      "list": ["cheddar", "cheddar cheese"]
+    }, {
+      "id": 105631161,
+      "canonicalForm": "Cheese",
+      "list": ["cheeses", "cheese"]
+    }, {
+      "id": 105631162,
+      "canonicalForm": "Chicken",
+      "list": ["chicken", "chickens", "grilled chicken"]
+    }, {
+      "id": 105631163,
+      "canonicalForm": "Corn",
+      "list": ["corn"]
+    }, {
+      "id": 105631164,
+      "canonicalForm": "Dip",
+      "list": []
+    }, {
+      "id": 105631165,
+      "canonicalForm": "Eggplant",
+      "list": ["eggplant", "eggplants"]
+    }, {
+      "id": 105631166,
+      "canonicalForm": "Garlic",
+      "list": ["garlic", "garlics"]
+    }, {
+      "id": 105631167,
+      "canonicalForm": "Green Olive",
+      "list": ["green olive", "green olives"]
+    }, {
+      "id": 105631168,
+      "canonicalForm": "Ham",
+      "list": ["ham"]
+    }, {
+      "id": 105631169,
+      "canonicalForm": "Hot Sauce",
+      "list": ["hot sauce"]
+    }, {
+      "id": 105631170,
+      "canonicalForm": "Jalapeno",
+      "list": ["Jalapenos", "jalapeno", "jalapeno peppers", "jalapeno pepper", "spicy peppers"]
+    }, {
+      "id": 105631171,
+      "canonicalForm": "Lettuce",
+      "list": ["lettuce"]
+    }, {
+      "id": 105631172,
+      "canonicalForm": "Meatballs",
+      "list": ["meatball", "meatballs"]
+    }, {
+      "id": 105631173,
+      "canonicalForm": "Mozzarella",
+      "list": ["mozzarella", "mozzarella cheese", "mozzerella", "mozzerella cheese", "mozarela cheese", "mozarela", "mozzaralla ranch", "mozzerella ranch"]
+    }, {
+      "id": 105631174,
+      "canonicalForm": "Mushroom",
+      "list": ["Mushrooms", "mushroom", "muhsroom"]
+    }, {
+      "id": 105631175,
+      "canonicalForm": "Olive",
+      "list": ["olive", "black olive", "black olives", "olives"]
+    }, {
+      "id": 105631176,
+      "canonicalForm": "Onions",
+      "list": ["onion", "onions", "grilled onions"]
+    }, {
+      "id": 105631177,
+      "canonicalForm": "Oregano",
+      "list": ["oregano", "oreganos"]
+    }, {
+      "id": 105631178,
+      "canonicalForm": "Parmesan Cheese",
+      "list": ["parmesan cheese", "parmisan cheese", "parmesan"]
+    }, {
+      "id": 105631179,
+      "canonicalForm": "Pepperoni",
+      "list": ["pepperoni", "pepperonis", "peperoni"]
+    }, {
+      "id": 105631180,
+      "canonicalForm": "Peppers",
+      "list": ["green peppers", "green pepper", "pepper", "peppers"]
+    }, {
+      "id": 105631181,
+      "canonicalForm": "Pesto",
+      "list": ["pesto", "pesto sauce"]
+    }, {
+      "id": 105631182,
+      "canonicalForm": "Pineapple",
+      "list": ["pineapple", "pineapples"]
+    }, {
+      "id": 105631183,
+      "canonicalForm": "Ranch",
+      "list": ["ranch", "ranch sauce"]
+    }, {
+      "id": 105631184,
+      "canonicalForm": "Red Peppers",
+      "list": ["red pepper", "red peppers"]
+    }, {
+      "id": 105631185,
+      "canonicalForm": "Salami",
+      "list": ["salami", "salamis"]
+    }, {
+      "id": 105631186,
+      "canonicalForm": "Sauce",
+      "list": ["sauce", "red sauce", "red sauces", "pizza sauce"]
+    }, {
+      "id": 105631187,
+      "canonicalForm": "Sausage",
+      "list": ["italian sausage", "sausage", "sausages"]
+    }, {
+      "id": 105631188,
+      "canonicalForm": "Spinach",
+      "list": ["spinach"]
+    }, {
+      "id": 105631189,
+      "canonicalForm": "Sun Dried Tomato",
+      "list": ["sun-dried tomato"]
+    }, {
+      "id": 105631190,
+      "canonicalForm": "Tomato",
+      "list": ["tomato", "tomatos", "tomatoes"]
+    }, {
+      "id": 105631191,
+      "canonicalForm": "Turkey",
+      "list": ["turkey"]
+    }, {
+      "id": 105631192,
+      "canonicalForm": "Works",
+      "list": ["various toppings", "the works"]
+    }, {
+      "id": 105631193,
+      "canonicalForm": "Zuccini",
+      "list": ["zuccinis", "zuccini"]
+    }],
+    "roles": []
+  }]
