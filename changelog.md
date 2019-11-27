@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.4
+
+* Named exported Interfaces
+
 ## 1.0.3
 
 * Separate values and features objects
