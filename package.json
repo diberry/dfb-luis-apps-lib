@@ -1,6 +1,6 @@
 {
   "name": "dfb-luis-apps-lib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -31,19 +31,17 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
-    "@types/node": "^12.6.9",
+    "@types/node": "^12.12.14",
     "@types/request": "^2.48.2",
-    "@types/request-promise": "^4.1.44",
+    "@types/request-promise": "^4.1.45",
+    "@types/requestretry": "^1.12.5",
     "@types/uuid": "^3.4.5",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
-    "ts-jest": "^24.1.0",
+    "ts-jest": "^24.2.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.2"
-  },
-  "changeLog": {
-    "1.0.1": "Added mock for request, added param test, coverage=100% all tests pass, fixed failing npm audit"
   }
 }

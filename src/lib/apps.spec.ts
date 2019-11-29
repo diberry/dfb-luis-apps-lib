@@ -9,7 +9,7 @@ import { LuisAppVersions } from './versions';
 import { LuisAppVersionModels } from './models';
 
 // MOCKS
-const mockRequest = require('request-promise');
+const mockRequest = require('requestretry');
 const mockLuisAppVersionsGetVersions = jest.spyOn(LuisAppVersions, 'getVersions');
 mockLuisAppVersionsGetVersions.mockResolvedValue(<ILuisAppVersion[]>MockData.Versions);
 

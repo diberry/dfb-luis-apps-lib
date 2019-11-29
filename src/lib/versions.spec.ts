@@ -6,7 +6,7 @@ jest.mock('./models');
 import { LuisAppVersionModels } from './models';
 
 const versions_mock_data = JSON.stringify(MockData.Versions);
-const mockRequest = require('request-promise');
+const mockRequest = require('requestretry');
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';

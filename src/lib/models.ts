@@ -1,5 +1,4 @@
-const request = require('request-promise');
-//const retry = require('async-await-retry');
+import { request } from './httpRequest';
 import { IValues, ILuisModel } from './interfaces';
 
 export class LuisAppVersionModels {

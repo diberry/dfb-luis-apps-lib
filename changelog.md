@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.5
+
+* Request retry
+
 ## 1.0.4
 
 * Named exported Interfaces

@@ -1,5 +1,4 @@
-const request = require('request-promise');
-
+import { request } from './httpRequest';
 import { IValues, ILuisApp, IFeatureFlags } from './interfaces';
 import { LuisAppVersions } from './versions';
 
@@ -26,6 +25,7 @@ export class LuisApps {
       };
 
       const myApps = await request(requestOptions);
+
       const appsAsObjects = JSON.parse(myApps);
 
       if (!features || features.versions === false) return appsAsObjects;

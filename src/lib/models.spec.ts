@@ -4,7 +4,7 @@ import { MockData } from '../mockData/index';
 
 const models_mock_data = JSON.stringify(MockData.Models);
 
-const mockRequest = require('request-promise');
+const mockRequest = require('requestretry');
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
