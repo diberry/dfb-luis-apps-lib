@@ -1,8 +1,14 @@
 import { IValues, IFeatureFlags } from './interfaces';
 import { LuisDataTable } from '../index';
+import { MockData } from '../mockData/index';
+
+jest.mock('./httpRequest', () => ({
+  request: jest.fn(() => { return Promise.resolve(MockData.Apps); }
+)}));
+
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
+const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
 
 describe('LUIS Data Table', () => {
   describe('returns 2xx', () => {

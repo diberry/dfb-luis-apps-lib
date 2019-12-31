@@ -5,20 +5,18 @@ import { MockData } from '../mockData/index';
 jest.mock('./models');
 import { LuisAppVersionModels } from './models';
 
-const versions_mock_data = JSON.stringify(MockData.Versions);
-const mockRequest = require('requestretry');
+jest.mock('./httpRequest', () => ({
+  request: jest.fn(() => { return Promise.resolve(MockData.Versions); }
+)}));
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
+const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
 const real_appId = 'e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c';
 
 const mockLuisAppVersionModelsGetModels = jest.spyOn(LuisAppVersionModels, 'getModels');
 mockLuisAppVersionModelsGetModels.mockResolvedValue(<ILuisModel[]>MockData.Models);
 
 describe('LUIS Versions', () => {
-  beforeEach(() => {
-    mockRequest.mockImplementationOnce(() => Promise.resolve(versions_mock_data));
-  });
 
   afterEach(() => {
     jest.clearAllMocks();

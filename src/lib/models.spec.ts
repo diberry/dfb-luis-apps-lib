@@ -2,19 +2,16 @@ import { LuisAppVersionModels } from '../index';
 import { IValues, ILuisModel } from './interfaces';
 import { MockData } from '../mockData/index';
 
-const models_mock_data = JSON.stringify(MockData.Models);
-
-const mockRequest = require('requestretry');
+jest.mock('./httpRequest', () => ({
+  request: jest.fn(() => { return Promise.resolve(MockData.Models); }
+)}));
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
+const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
 const real_appId = 'e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c';
 const real_versionId = '0.4';
 
 describe('LUIS Models', () => {
-  beforeEach(() => {
-    mockRequest.mockImplementationOnce(() => Promise.resolve(models_mock_data));
-  });
 
   afterEach(() => {
     jest.resetAllMocks();

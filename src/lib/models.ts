@@ -37,9 +37,7 @@ export class LuisAppVersionModels {
 
       const myModels = await request(requestOptions);
 
-      const modelsAsObjects = JSON.parse(myModels);
-
-      return modelsAsObjects;
+      return myModels;
     } catch (err) {
       throw err;
     }

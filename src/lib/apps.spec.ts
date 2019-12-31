@@ -1,5 +1,9 @@
 import { MockData } from '../mockData/index';
 
+jest.mock('./httpRequest', () => ({
+  request: jest.fn(() => { return Promise.resolve(MockData.Apps); }
+)}));
+
 jest.mock('./versions');
 jest.mock('./models');
 
@@ -9,7 +13,6 @@ import { LuisAppVersions } from './versions';
 import { LuisAppVersionModels } from './models';
 
 // MOCKS
-const mockRequest = require('requestretry');
 const mockLuisAppVersionsGetVersions = jest.spyOn(LuisAppVersions, 'getVersions');
 mockLuisAppVersionsGetVersions.mockResolvedValue(<ILuisAppVersion[]>MockData.Versions);
 
@@ -18,9 +21,8 @@ const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveser
 
 describe('LUIS Apps', () => {
   beforeEach(() => {
-    mockRequest.mockImplementationOnce(() => Promise.resolve(JSON.stringify(MockData.Apps)));
-  });
 
+  });
   afterEach(() => {
     jest.clearAllMocks();
     jest.restoreAllMocks();

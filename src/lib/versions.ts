@@ -32,8 +32,7 @@ export class LuisAppVersions {
         },
       };
 
-      const myVersions = await request(requestOptions);
-      const versionsAsObjects = JSON.parse(myVersions);
+      const versionsAsObjects = await request(requestOptions);
 
       if (!features || features.models === false) return versionsAsObjects;
 

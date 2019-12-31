@@ -24,9 +24,7 @@ export class LuisApps {
         },
       };
 
-      const myApps = await request(requestOptions);
-
-      const appsAsObjects = JSON.parse(myApps);
+      const appsAsObjects = await request(requestOptions);
 
       if (!features || features.versions === false) return appsAsObjects;
 
