@@ -1,5 +1,12 @@
 # Change log
 
+## 1.0.7
+
+*Retry delay*
+
+* Add retry delay as a field in values object
+* Changed default delay from 1000 to 3000 ms
+
 ## 1.0.6
 
 * Change dependency from `requestretry` to `supertest`

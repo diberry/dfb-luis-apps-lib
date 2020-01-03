@@ -1,7 +1,7 @@
 import * as superagent_request from 'superagent';
 
 // time delay between requests
-const retryDelay = 1000;
+var retryDelay = 3000;
 
 // retry recount
 const maxAttempts = 5;
@@ -20,6 +20,10 @@ var retryStrategy = (err, response) => {
 };
 export const request = async (options: any): Promise<any> => {
 
+  if(options.retryDelay){
+    retryDelay = options.retryDelay;
+  }
+  
   if (options.method.toUpperCase()==="GET"){
     const results = await superagent_request.get(options.url)
       .retry(maxAttempts, retryStrategy)
