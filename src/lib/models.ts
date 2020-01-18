@@ -35,8 +35,8 @@ export class LuisAppVersionModels {
         },
       };
 
-      if (values && values.retryDelay){
-        requestOptions["retryDelay"] = values.retryDelay
+      if (values && values.retryDelay) {
+        requestOptions['retryDelay'] = values.retryDelay;
       }
 
       const myModels = await request(requestOptions);

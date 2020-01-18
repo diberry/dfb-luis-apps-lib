@@ -6,8 +6,10 @@ jest.mock('./models');
 import { LuisAppVersionModels } from './models';
 
 jest.mock('./httpRequest', () => ({
-  request: jest.fn(() => { return Promise.resolve(MockData.Versions); }
-)}));
+  request: jest.fn(() => {
+    return Promise.resolve(MockData.Versions);
+  }),
+}));
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
@@ -17,7 +19,6 @@ const mockLuisAppVersionModelsGetModels = jest.spyOn(LuisAppVersionModels, 'getM
 mockLuisAppVersionModelsGetModels.mockResolvedValue(<ILuisModel[]>MockData.Models);
 
 describe('LUIS Versions', () => {
-
   afterEach(() => {
     jest.clearAllMocks();
     jest.restoreAllMocks();

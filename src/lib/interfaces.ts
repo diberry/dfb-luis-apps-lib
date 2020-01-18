@@ -1,11 +1,41 @@
 export interface IFeatureFlags {
-  versions: boolean;
-  models: boolean;
+  versions?: boolean;
+  models?: boolean;
 }
 export interface IValues {
   /* Key value pairs for all the field values with key being the field name */
   [key: string]: any;
 }
+
+export interface ILuisFull {
+  appId: string;
+  appName: string;
+  appDescription: string | null;
+  appCulture: string;
+  appVersionsCount: number | null;
+  appCreatedDateTime: string | null;
+  appEndpointHitsCount: number | null;
+  appActiveVersion: string | null;
+  appTokenizerVersion: string | null;
+
+  version: string;
+  versionTrainingStatus: string;
+  versionCreatedDate: string;
+  versionLastModifiedDate: string;
+  versionLastPublishedDate: string;
+  versionLastTrainedDate: string;
+
+  modelId: string;
+  modelName: string;
+  modelTypeId: number;
+  modelReadableType: string;
+  modelSubListsCount: number | null;
+  modelRolesCount: number | null;
+  modelChildrenCount: number | null;
+  modelExplicitListCount: number | null;
+  modelRegexPattern: string;
+}
+
 export interface ILuisApp {
   id: string;
   name: string;
@@ -42,7 +72,7 @@ export interface ILuisAppVersion {
   createdDateTime: string;
   lastModifiedDateTime: string;
   lastTrainedDateTime: string;
-  lastPublishedDateTime?: string;
+  lastPublishedDateTime?: string | undefined | null;
   endpointUrl?: any;
   assignedEndpointKey?: any;
   externalApiKeys?: any;
@@ -53,7 +83,7 @@ export interface ILuisAppVersion {
   models?: ILuisModel[];
 }
 export interface ILuisDataTable {
-  apps: ILuisApp[];
+  apps?: ILuisApp[];
 }
 
 export interface ILuisModel {
@@ -64,6 +94,13 @@ export interface ILuisModel {
   subLists?: ILuisModelSubList[];
   roles?: ILuisModelRole[];
   children?: ILuisModelChild[];
+  explicitList?: ILuisExplicitItem[];
+  regexPattern?: string;
+}
+
+export interface ILuisExplicitItem {
+  id: string;
+  explicitListItem: string;
 }
 
 export interface ILuisModelChild {
@@ -72,7 +109,7 @@ export interface ILuisModelChild {
   instanceOf?: string;
   children?: ILuisModelChild[];
   typeId: number;
-  readableType: string;
+  readableType?: string;
 }
 
 export interface ILuisModelRole {

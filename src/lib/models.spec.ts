@@ -3,8 +3,10 @@ import { IValues, ILuisModel } from './interfaces';
 import { MockData } from '../mockData/index';
 
 jest.mock('./httpRequest', () => ({
-  request: jest.fn(() => { return Promise.resolve(MockData.Models); }
-)}));
+  request: jest.fn(() => {
+    return Promise.resolve(MockData.Models);
+  }),
+}));
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
@@ -12,7 +14,6 @@ const real_appId = 'e81bd25c-41c7-4ff1-8f8a-de2ad3f29f3c';
 const real_versionId = '0.4';
 
 describe('LUIS Models', () => {
-
   afterEach(() => {
     jest.resetAllMocks();
     jest.restoreAllMocks();

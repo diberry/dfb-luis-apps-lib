@@ -1,8 +1,10 @@
 import { MockData } from '../mockData/index';
 
 jest.mock('./httpRequest', () => ({
-  request: jest.fn(() => { return Promise.resolve(MockData.Apps); }
-)}));
+  request: jest.fn(() => {
+    return Promise.resolve(MockData.Apps);
+  }),
+}));
 
 jest.mock('./versions');
 jest.mock('./models');
@@ -20,9 +22,7 @@ const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://diberry-lang-understanding-west-us-2.cognitiveservices.azure.com/';
 
 describe('LUIS Apps', () => {
-  beforeEach(() => {
-
-  });
+  beforeEach(() => {});
   afterEach(() => {
     jest.clearAllMocks();
     jest.restoreAllMocks();

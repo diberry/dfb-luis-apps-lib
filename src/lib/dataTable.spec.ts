@@ -3,9 +3,10 @@ import { LuisDataTable } from '../index';
 import { MockData } from '../mockData/index';
 
 jest.mock('./httpRequest', () => ({
-  request: jest.fn(() => { return Promise.resolve(MockData.Apps); }
-)}));
-
+  request: jest.fn(() => {
+    return Promise.resolve(MockData.Apps);
+  }),
+}));
 
 const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
@@ -26,7 +27,13 @@ describe('LUIS Data Table', () => {
         const dataTable = await LuisDataTable.getDataTable(values, features);
         expect(dataTable).not.toBe(undefined);
         expect(dataTable.apps).not.toBe(undefined);
-        expect(dataTable.apps[0]).not.toHaveProperty('versions');
+
+        if (dataTable && dataTable.apps && dataTable.apps[0]) {
+          expect(dataTable?.apps[0]).not.toHaveProperty('versions');
+        } else {
+          expect('error').toEqual("can't determine if apps has first element");
+        }
+
         done();
       } catch (err) {
         done(err);

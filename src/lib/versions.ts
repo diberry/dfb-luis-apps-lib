@@ -32,8 +32,8 @@ export class LuisAppVersions {
         },
       };
 
-      if (values && values.retryDelay){
-        requestOptions["retryDelay"] = values.retryDelay
+      if (values && values.retryDelay) {
+        requestOptions['retryDelay'] = values.retryDelay;
       }
 
       const versionsAsObjects = await request(requestOptions);

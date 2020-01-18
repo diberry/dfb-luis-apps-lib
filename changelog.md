@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.8
+
+Flatten JSON for data table
+
 ## 1.0.7
 
 *Retry delay*

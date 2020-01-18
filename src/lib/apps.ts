@@ -23,8 +23,8 @@ export class LuisApps {
           'Ocp-Apim-Subscription-Key': values.key,
         },
       };
-      if (values && values.retryDelay){
-        requestOptions["retryDelay"] = values.retryDelay
+      if (values && values.retryDelay) {
+        requestOptions['retryDelay'] = values.retryDelay;
       }
 
       const appsAsObjects = await request(requestOptions);
