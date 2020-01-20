@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.11
+
+Publish only build files - again
+
 ## 1.0.10
 
 Publish only build files

@@ -1,12 +1,11 @@
 {
   "name": "dfb-luis-apps-lib",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
-    "build/index.d.ts",
-    "build/index.js"
+    "build"
   ],
   "scripts": {
     "test": "jest --detectOpenHandles --coverage --watchAll",
