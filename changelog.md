@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.9
+
+Publish only build dir
+
 ## 1.0.8
 
 Flatten JSON for data table
