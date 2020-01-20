@@ -2,6 +2,7 @@ import Apps from './apps.json';
 import Versions from './versions.json';
 import Models from './models.json';
 import Full from './fullNest.json';
+import { TransformJsonToTable } from '../lib/transformJsonToTable';
 
 const full = Full;
 
@@ -22,13 +23,19 @@ const pruneModels = () => {
   }
 };
 
+const flatten = () => {
+  return TransformJsonToTable(full?.apps);
+};
+
 pruneModels();
+const fullFlattened = flatten();
 
 const MockData = {
   Apps, // 9 total
   Versions, // 2 total
   Models,
   Full: full,
+  FullFlat: fullFlattened,
   FullAppsAndVersionsOnly: appsAndVersionsOnly, //11
 };
 

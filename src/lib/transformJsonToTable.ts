@@ -1,9 +1,9 @@
-import { ILuisFull, ILuisApp, ILuisModel, ILuisAppVersion } from './interfaces';
+import { ILuisFlat, ILuisApp, ILuisModel, ILuisAppVersion } from './interfaces';
 
-export const TransformJsonToTable = (apps: any[]): ILuisFull[] => {
-  if (!apps || apps.length === 0) return [] as ILuisFull[];
+export const TransformJsonToTable = (apps: any[]): ILuisFlat[] => {
+  if (!apps || apps.length === 0) return [] as ILuisFlat[];
 
-  let fullTable: ILuisFull[] = [];
+  let fullTable: ILuisFlat[] = [];
 
   for (const app of apps as any[]) {
     if (!app.versions || app.versions.length === 0) {

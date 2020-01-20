@@ -1,8 +1,12 @@
-import { IValues, ILuisDataTable, IFeatureFlags } from './interfaces';
+import { IValues, IFeatureFlags } from './interfaces';
 import { LuisApps } from './apps';
+import { MockData } from '../mockData';
+import { TransformJsonToTable } from './transformJsonToTable';
 
 export class LuisDataTable {
-  static async getDataTable(values: IValues, features?: IFeatureFlags): Promise<ILuisDataTable> {
+
+  static async getDataTable(values: IValues, features: IFeatureFlags): Promise<any> {
+
     if (!values || values === undefined || values === [] || values.length === 0)
       throw new Error('values: IValues is empty');
 
@@ -14,12 +18,25 @@ export class LuisDataTable {
       throw new Error('dfb-luis-apps-lib::getDataTable - invalid parameter `endpoint`');
     }
 
-    let dataTable: ILuisDataTable = {
-      apps: [],
-    };
+    let data =  (features.pivot) ?
+      await LuisDataTable.getFlattenedDataTable(values, features) :
+      await LuisDataTable.getNestedDataTable(values, features);
 
-    dataTable.apps = await LuisApps.getApps(values, features);
+    return {
+      apps: data,
+      features
+    }
+  }
+  static async getNestedDataTable(values: IValues, features: IFeatureFlags): Promise<any[]> {
 
-    return dataTable;
+    if(features.mockData) return MockData.Full.apps;
+
+    return await LuisApps.getApps(values, features);
+  }
+  static async getFlattenedDataTable(values: IValues, features: IFeatureFlags): Promise<any[]> {
+
+    if(features.mockData) return MockData.FullFlat;
+
+    return TransformJsonToTable(await LuisApps.getApps(values, features));
   }
 }

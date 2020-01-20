@@ -53,7 +53,7 @@ describe('LIVE - LUIS Apps', () => {
 
       done();
     } catch (ex) {
-      done(`${ex}`);
+      done(`${ex.message}`);
     }
   });
   it('if correct key, then get apps, versions, models', async done => {

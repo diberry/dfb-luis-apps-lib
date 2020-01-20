@@ -2,6 +2,8 @@ export { LuisAppVersionModels } from './lib/models';
 export { LuisAppVersions } from './lib/versions';
 export { LuisApps } from './lib/apps';
 export { LuisDataTable } from './lib/dataTable';
+export { TransformJsonToTable } from './lib/transformJsonToTable';
+export { MockData } from './mockData'
 export {
   IEndpoints,
   IEndPointType,
@@ -14,4 +16,5 @@ export {
   ILuisModelRole,
   ILuisModelSubList,
   IValues,
+  ILuisFlat
 } from './lib/interfaces';

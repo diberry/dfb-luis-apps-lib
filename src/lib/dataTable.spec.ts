@@ -12,7 +12,38 @@ const fake_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 const real_endpoint = 'https://westus.api.cognitiveservices.azure.com/';
 
 describe('LUIS Data Table', () => {
-  describe('returns 2xx', () => {
+  describe('feature flag mockData===true', () => {
+    it('pivot', async done => {
+      try {
+        const values: IValues = {
+          endpoint: real_endpoint,
+          key: fake_key,
+        };
+        const features: IFeatureFlags = {
+          versions: false,
+          models: false,
+          mockData: true,
+          pivot: true
+        };
+
+        const dataTable = await LuisDataTable.getDataTable(values, features);
+        expect(dataTable).not.toBe(undefined);
+        expect(dataTable.apps).not.toBe(undefined);
+
+        if (dataTable && dataTable.apps && dataTable.apps[0]) {
+          expect(dataTable?.apps[0]).not.toHaveProperty('versions');
+        } else {
+          expect('error').toEqual("can't determine if apps has first element");
+        }
+
+        done();
+      } catch (err) {
+        done(err);
+      }
+    });
+  });
+
+  describe('returns 2xx mockData===false', () => {
     it('if correct key, then get DataTable', async done => {
       try {
         const values: IValues = {
@@ -22,6 +53,8 @@ describe('LUIS Data Table', () => {
         const features: IFeatureFlags = {
           versions: false,
           models: false,
+          mockData: false,
+          pivot: false
         };
 
         const dataTable = await LuisDataTable.getDataTable(values, features);
@@ -49,7 +82,14 @@ describe('LUIS Data Table', () => {
           key: undefined,
         };
 
-        await LuisDataTable.getDataTable(values);
+        const features: IFeatureFlags = {
+          versions: false,
+          models: false,
+          mockData: true,
+          pivot: false
+        };
+
+        await LuisDataTable.getDataTable(values, features);
 
         done(`didn't throw error but expected one`);
       } catch (error) {
@@ -64,8 +104,14 @@ describe('LUIS Data Table', () => {
           endpoint: undefined,
           key: fake_key,
         };
+        const features: IFeatureFlags = {
+          versions: false,
+          models: false,
+          mockData: true,
+          pivot: false
+        };
 
-        await LuisDataTable.getDataTable(values);
+        await LuisDataTable.getDataTable(values, features);
 
         done(`didn't throw error but expected one`);
       } catch (error) {
@@ -79,8 +125,15 @@ describe('LUIS Data Table', () => {
         // @ts-ignore
         const values = undefined;
 
+        const features: IFeatureFlags = {
+          versions: false,
+          models: false,
+          mockData: true,
+          pivot: false
+        };
+
         // @ts-ignore
-        await LuisDataTable.getDataTable(values);
+        await LuisDataTable.getDataTable(values, features);
 
         done(`didn't throw error but expected one`);
       } catch (error) {
@@ -94,8 +147,15 @@ describe('LUIS Data Table', () => {
         // @ts-ignore
         const values = [];
 
+        const features: IFeatureFlags = {
+          versions: false,
+          models: false,
+          mockData: true,
+          pivot: false
+        };
+
         // @ts-ignore
-        await LuisDataTable.getDataTable(values);
+        await LuisDataTable.getDataTable(values, features);
 
         done(`didn't throw error but expected one`);
       } catch (error) {
